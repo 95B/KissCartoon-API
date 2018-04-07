@@ -1,12 +1,12 @@
 from setuptools import setup
 
 VERSION = "0.1"
-URL = "https://github.com/Thyrst/KissCartoon-API"
+URL = "https://github.com/95B/KissCartoon-API"
 
 description = open('README.rst').read()
 
 setup(
-    name="kisscartoon-api",
+    name="kisscartoon-api-new",
     version=VERSION,
 
     description="The unofficial API for KissCartoon websites",
