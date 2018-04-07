@@ -6,6 +6,7 @@ import time
 from grab import Grab, error
 from collections.abc import Iterator
 from datetime import datetime
+import cfscrape
 
 
 ### Helper functions ######################################
@@ -114,8 +115,9 @@ class KissGrab(Grab):
                 super().go(url, *args, **kwargs)
                 if self._check():
                     try:
-                        new_url = self._unblock_site(url)
-                        super().go(new_url, *args, **kwargs)
+                        scraper = cfscrape.create_scraper()
+                        super().scraper.get(url)
+                        # super().go(new_url, *args, **kwargs)
                     except IndexError:
                         raise BlockedAccess()
                     if self._check():
@@ -169,7 +171,7 @@ class KissCartoon:
 
     It also contains list of top ten newest, most popular and recently updated series.
     '''
-    def __init__(self, url='kisscartoon.io'):
+    def __init__(self, url='kisscartoon.ac'):
         self.url = _base_url(url)
         self._grab = KissGrab()
         self._top = {}
